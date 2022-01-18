@@ -82,6 +82,7 @@ class LoginView extends StatelessWidget {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 40),
                               child: PinPut(
+                                onSubmit: (String pin) => model.login(),
                                 pinAnimationType: PinAnimationType.none,
                                 obscureText: '●',
                                 fieldsCount: 4,
