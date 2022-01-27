@@ -10,6 +10,7 @@ const kHomeSearchBarIconColor = Color(0xFF808080);
 const kHomeSearchBarTextColor = Color(0x858f8f90);
 const kHomeBackgroundGradientColor = Color(0xFFE0DFDF);
 const kGeneralButtonColor = Color(0xFF334148);
+const kAccountCardFillColor = Color(0xFFE2E1E1);
 const kLoginDivider = Padding(
   padding: EdgeInsets.symmetric(horizontal: 15),
   child: DottedLine(

@@ -6,12 +6,18 @@ import 'package:digivo/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
+import 'categories_gridview/categories_gridview.dart';
+
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final numbers = List.generate(18, (index) => index);
     final size = MediaQuery.of(context).size;
+    print(size.height);
+    final double _gridViewHeight = size.height - 305 - size.height * 0.18;
+    print(_gridViewHeight);
     return ViewModelBuilder<HomeViewModel>.nonReactive(
       viewModelBuilder: () => HomeViewModel(),
       builder: (context, model, child) => SafeArea(
@@ -93,8 +99,8 @@ class HomeView extends StatelessWidget {
                       ),
                       const SizedBox(height: 20),
                       Expanded(
-                        flex: 5,
                         child: Container(
+                          padding: const EdgeInsets.only(left: 20),
                           decoration: const BoxDecoration(
                             color: Colors.white,
                             gradient: LinearGradient(
@@ -109,31 +115,38 @@ class HomeView extends StatelessWidget {
                               topLeft: Radius.circular(24),
                             ),
                           ),
-                          child: Row(
+                          child: Column(
                             children: [
-                              const SizedBox(
-                                width: 20,
-                              ),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: const [
-                                  SizedBox(
-                                    height: 20,
+                              Row(
+                                children: [
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: const [
+                                      SizedBox(
+                                        height: 20,
+                                      ),
+                                      Text(
+                                        'Categories',
+                                        style: TextStyle(
+                                            fontFamily: 'AvenirNext',
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 20),
+                                        textAlign: TextAlign.start,
+                                      ),
+                                    ],
                                   ),
-                                  Text(
-                                    'Categories',
-                                    style: TextStyle(
-                                        fontFamily: 'AvenirNext',
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 20),
-                                    textAlign: TextAlign.start,
-                                  )
                                 ],
                               ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              CategoriesGridview(
+                                  gridViewHeight: _gridViewHeight,
+                                  numbers: numbers),
                             ],
                           ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                   LastSavedAccountsDraggableSheet(size: size)
