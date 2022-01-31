@@ -1,6 +1,6 @@
 import 'package:digivo/constants.dart';
 import 'package:digivo/ui/home/home_viewmodel.dart';
-import 'package:digivo/widgets/custom_drawer.dart';
+import 'package:digivo/ui/home/custom_drawer/custom_drawer.dart';
 import 'package:digivo/widgets/last_saved_accounts_draggable_sheet.dart';
 import 'package:digivo/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
@@ -15,9 +15,9 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     final numbers = List.generate(18, (index) => index);
     final size = MediaQuery.of(context).size;
-    print(size.height);
+
     final double _gridViewHeight = size.height - 305 - size.height * 0.18;
-    print(_gridViewHeight);
+
     return ViewModelBuilder<HomeViewModel>.nonReactive(
       viewModelBuilder: () => HomeViewModel(),
       builder: (context, model, child) => SafeArea(
@@ -56,7 +56,9 @@ class HomeView extends StatelessWidget {
                 backgroundColor: Colors.transparent,
                 elevation: 0,
               ),
-              drawer: const CustomDrawer(),
+              drawer: CustomDrawer(
+                size: size,
+              ),
               body: Stack(
                 children: [
                   Column(

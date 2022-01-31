@@ -28,9 +28,9 @@ class SearchBar extends StatelessWidget {
               fontSize: 16,
             ),
             decoration: InputDecoration(
-                hintText: 'Search',
+                hintText: 'Search Category',
                 hintStyle: const TextStyle(
-                    color: kHomeSearchBarTextColor, fontSize: 16),
+                    color: kHomeSearchBarTextColor, fontSize: 15),
                 contentPadding: EdgeInsets.zero,
                 prefixIcon: const Icon(
                   FontAwesomeIcons.search,
