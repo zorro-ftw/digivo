@@ -35,6 +35,7 @@ class HomeView extends StatelessWidget {
               floatingActionButtonLocation:
                   FloatingActionButtonLocation.centerFloat,
               floatingActionButton: FloatingActionButton.extended(
+                elevation: 8,
                 onPressed: () {},
                 label: const Text(
                   'Add Account',

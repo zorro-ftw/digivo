@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:digivo/ui/home/custom_drawer/custom_drawer_viewmodel.dart';
+import 'package:digivo/ui/home/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:digivo/widgets/drawer_tile.dart';
 import 'package:stacked/stacked.dart';
@@ -29,15 +30,26 @@ class CustomDrawer extends StatelessWidget {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   const SizedBox(
-                    height: 80,
+                    height: 100,
                   ),
                   Expanded(
                     child: ListView.builder(
                       primary: true,
                       itemBuilder: (context, index) => DrawerTile(
-                        drawerItem: model.drawerItemsList[index],
-                        onTap: null,
-                      ),
+                          drawerItem: model.drawerItemsList[index],
+                          onTap: () =>
+                              model.drawerItemsList[index].routeName != null
+                                  ? Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) {
+                                          return model.drawerItemsList[index]
+                                                  .routeName ??
+                                              const HomeView();
+                                        },
+                                      ),
+                                    )
+                                  : null),
                       itemCount: model.drawerItemsList.length,
                     ),
                   )
